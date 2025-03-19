@@ -1,34 +1,25 @@
 #include <stdio.h>
 #define MAX_CARTAS 2
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
-
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    //Carta 1
+    // Carta 1
     char estado;
-    char codigo [20];
-    char nome [20];
+    char codigo[20];
+    char nome[20];
     int populacao;
     float area;
     float pib;
-    int pontos_turisticos; 
+    int pontos_turisticos;
+    float densidade_populacional;
+    float pib_per_capita;
+    long int superpoder;
 
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-   
+    // Cadastro da Carta 1
     printf("Digite seu estado (sigla, ex: S para São Paulo): ");
-    scanf(" %c", &estado);  // Espaço antes do %c para evitar erro no buffer
+    scanf(" %c", &estado);
 
     printf("Digite o código da cidade: ");
-    scanf("%s", codigo);  // Corrigido
+    scanf("%s", codigo);
 
     printf("Digite o nome da cidade: ");
     scanf("%s", nome);
@@ -40,16 +31,26 @@ int main() {
     scanf("%f", &area);
 
     printf("Digite o PIB da cidade: ");
-    scanf("%f", &pib); 
+    scanf("%f", &pib);
 
     printf("Digite o número de pontos turísticos: ");
     scanf("%d", &pontos_turisticos);
 
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    // Verificação de divisão por zero
+    if (area == 0) {
+        printf("Erro: a área não pode ser zero!\n");
+        return 1;
+    }
 
-    printf("\n---- Dados da Cidade ----\n");
+    // Calculando a densidade populacional e PIB per capita
+    densidade_populacional = populacao / area;
+    pib_per_capita = pib / populacao;
+
+    // Calculando o "superpoder" baseado em todas as variáveis
+    superpoder = (populacao * 0.1) + (pontos_turisticos * 50) + (densidade_populacional * 20) + (pib_per_capita * 10);
+
+    // Exibição dos Dados da Carta 1
+    printf("\n---- Dados da Cidade 1 ----\n");
     printf("Estado: %c\n", estado);
     printf("Código: %s\n", codigo);
     printf("Nome: %s\n", nome);
@@ -57,10 +58,11 @@ int main() {
     printf("Área: %.2f km²\n", area);
     printf("PIB: %.2f\n", pib);
     printf("Pontos Turísticos: %d\n", pontos_turisticos);
-
+    printf("Densidade Populacional: %.2f habitantes/km²\n", densidade_populacional);
+    printf("PIB per Capita: %.2f\n", pib_per_capita);
+    printf("Superpoder: %ld\n", superpoder);  // Exibição do superpoder
 
     // Carta 2
-
     char estado1;
     char codigo1[20];
     char nome1[20];
@@ -68,13 +70,16 @@ int main() {
     float area1;
     float pib1;
     int pontos_turisticos1;
+    float densidade_populacional1;
+    float pib_per_capita1;
+    long int superpoder1;
 
-
-    printf("Digite seu estado (sigla, ex: S para São Paulo): ");
-    scanf(" %c", &estado1);  // Espaço antes do %c para evitar erro no buffer
+    // Cadastro da Carta 2
+    printf("\nDigite seu estado (sigla, ex: S para São Paulo): ");
+    scanf(" %c", &estado1);
 
     printf("Digite o código da cidade: ");
-    scanf("%s", codigo1);  // Corrigido
+    scanf("%s", codigo1);
 
     printf("Digite o nome da cidade: ");
     scanf("%s", nome1);
@@ -91,9 +96,21 @@ int main() {
     printf("Digite o número de pontos turísticos: ");
     scanf("%d", &pontos_turisticos1);
 
-    // Exibição dos Dados da Carta 2:
+    // Verificação de divisão por zero
+    if (area1 == 0) {
+        printf("Erro: a área não pode ser zero!\n");
+        return 1;
+    }
 
-    printf("\n---- Dados da Cidade ----\n");
+    // Calculando a densidade populacional e PIB per capita
+    densidade_populacional1 = populacao1 / area1;
+    pib_per_capita1 = pib1 / populacao1;
+
+    // Calculando o "superpoder" baseado em todas as variáveis
+    superpoder1 = (populacao1 * 0.1) + (pontos_turisticos1 * 50) + (densidade_populacional1 * 20) + (pib_per_capita1 * 10);
+
+    // Exibição dos Dados da Carta 2
+    printf("\n---- Dados da Cidade 2 ----\n");
     printf("Estado: %c\n", estado1);
     printf("Código: %s\n", codigo1);
     printf("Nome: %s\n", nome1);
@@ -101,8 +118,9 @@ int main() {
     printf("Área: %.2f km²\n", area1);
     printf("PIB: %.2f\n", pib1);
     printf("Pontos Turísticos: %d\n", pontos_turisticos1);
-    
-
+    printf("Densidade Populacional: %.2f habitantes/km²\n", densidade_populacional1);
+    printf("PIB per Capita: %.2f\n", pib_per_capita1);
+    printf("Superpoder: %ld\n", superpoder1);  // Exibição do superpoder
 
     return 0;
 }
